@@ -6,7 +6,7 @@
       "type": "income",
       "category": "Venda",
       "price": 1400,
-      "createdAat": "2022-07-29T19:36:44.505Z"
+      "createdAt": "2022-07-29T19:36:44.505Z"
     },
     {
       "id": 2,
@@ -14,15 +14,71 @@
       "type": "outcome",
       "category": "Alimentação",
       "price": 50,
-      "createdAat": "2022-07-29T19:30:44.505Z"
+      "createdAt": "2022-07-29T19:30:44.505Z"
     },
     {
       "id": 3,
       "description": "Compra Ignite",
       "type": "outcome",
-      "category": "Formação",
+      "category": "Alimentação",
       "price": 1000,
-      "createdAat": "2022-07-29T19:36:44.505Z"
+      "createdAt": "2022-07-29T19:36:44.505Z"
+    },
+    {
+      "category": "Vida",
+      "description": "Teste 1",
+      "price": 1000,
+      "type": "income",
+      "id": 4,
+      "createdAt": "2022-07-29T19:36:44.505Z"
+    },
+    {
+      "category": "Alimentação",
+      "description": "Teste 2",
+      "price": 10,
+      "type": "outcome",
+      "createdAt": "2023-02-02T17:10:08.096Z",
+      "id": 5
+    },
+    {
+      "category": "Alimentação",
+      "description": "Teste 2",
+      "price": 10,
+      "type": "outcome",
+      "createdAt": "2023-02-02T17:10:13.130Z",
+      "id": 6
+    },
+    {
+      "category": "Alimentação",
+      "description": "Teste 2",
+      "price": 10,
+      "type": "outcome",
+      "createdAt": "2023-02-02T17:10:15.229Z",
+      "id": 7
+    },
+    {
+      "category": "Vida",
+      "description": "Teste 3",
+      "price": 11,
+      "type": "income",
+      "createdAt": "2023-02-02T17:12:22.672Z",
+      "id": 8
+    },
+    {
+      "category": "Vida",
+      "description": "Teste 3",
+      "price": 11,
+      "type": "outcome",
+      "createdAt": "2023-02-02T17:12:59.238Z",
+      "id": 9
+    },
+    {
+      "category": "Vida",
+      "description": "Test4",
+      "price": 111,
+      "type": "outcome",
+      "createdAt": "2023-02-02T17:24:47.552Z",
+      "id": 10
     }
   ]
 }

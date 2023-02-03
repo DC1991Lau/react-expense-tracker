@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
+import { api } from "../lib/axios";
 
 export interface TransactionData {
   id: number;
@@ -6,13 +7,20 @@ export interface TransactionData {
   type: "income" | "outcome";
   category: string;
   price: number;
-  createdAat: string;
+  createdAt: string;
+}
+
+export interface CreateTransactionData {
+  description: string;
+  type: "income" | "outcome";
+  category: string;
+  price: number;
 }
 
 interface TransactionsContextType {
   transactions: TransactionData[];
-  createTransaction: (data: TransactionData) => void;
-  loadTransactions: () => void;
+  createTransaction: (data: CreateTransactionData) => Promise<void>;
+  fetchTransactions: (query?: string) => Promise<void>;
   summary: () => { income: number; outcome: number; total: number };
 }
 
@@ -25,15 +33,29 @@ export function TransactionsContextProvider({
 }) {
   const [transactions, setTransactions] = useState<TransactionData[]>([]);
 
-  async function loadTransactions() {
-    const response = await fetch(
-      "https://3333-dc1991lau-reactexpenset-sjwudnevoxe.ws-eu84.gitpod.io/transactions"
-    );
-    const data = await response.json();
-    setTransactions(data);
+  async function fetchTransactions(query?: string) {
+    const response = await api.get("transactions", {
+      params: {
+        _sort: "createdAt",
+        _order: "desc",
+        q: query,
+      },
+    });
+    setTransactions(response.data);
   }
 
-  async function createTransaction(data: TransactionData) {}
+  async function createTransaction(data: CreateTransactionData) {
+    const { category, description, price, type } = data;
+    const response = await api.post("transactions", {
+      category,
+      description,
+      price,
+      type,
+      createdAt: new Date(),
+    });
+
+    setTransactions((state) => [response.data, ...state]);
+  }
 
   function summary() {
     const sum = transactions.reduce(
@@ -58,12 +80,12 @@ export function TransactionsContextProvider({
   }
 
   useEffect(() => {
-    loadTransactions();
+    fetchTransactions();
   }, []);
 
   return (
     <TransactionsContext.Provider
-      value={{ createTransaction, loadTransactions, transactions, summary }}
+      value={{ createTransaction, fetchTransactions, transactions, summary }}
     >
       {children}
     </TransactionsContext.Provider>

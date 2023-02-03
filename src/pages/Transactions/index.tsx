@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Header } from "../../components/Header";
 import Summary from "../../components/Summary";
 import { TransactionsContext } from "../../context/TransactionsContext";
@@ -30,9 +30,7 @@ export function TransactionsPage() {
                   </PriceHighlight>
                 </td>
                 <td>{transaction.category}</td>
-                <td>
-                  {dateFormatter.format(Date.parse(transaction.createdAat))}
-                </td>
+                <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
               </tr>
             ))}
           </tbody>
